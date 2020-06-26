@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Bin2Dec</string>
+    <string name="binary_number">Binary number</string>
+</resources>
