@@ -1,60 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+<layout>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/mainMiddleGuideline"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".5" />
+    <data>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/mainStartGuideline"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="@dimen/screen_horizontal_padding" />
+        <variable
+            name="viewModel"
+            type="oi.github.messiaslima.MainViewModel" />
+    </data>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/mainEndGuideline"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintGuide_end="@dimen/screen_horizontal_padding" />
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/screen_horizontal_padding"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        app:layout_constraintBottom_toTopOf="@id/mainBinaryNumberEditText"
-        app:layout_constraintEnd_toEndOf="@id/mainEndGuideline"
-        app:layout_constraintStart_toStartOf="@id/mainStartGuideline"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="123456" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/mainMiddleGuideline"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".5" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/binary_number"
-        app:layout_constraintBottom_toTopOf="@id/mainBinaryNumberEditText"
-        app:layout_constraintStart_toStartOf="@id/mainBinaryNumberEditText" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/mainStartGuideline"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/screen_horizontal_padding" />
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/mainBinaryNumberEditText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:digits="01"
-        android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@id/mainMiddleGuideline"
-        app:layout_constraintEnd_toEndOf="@id/mainEndGuideline"
-        app:layout_constraintStart_toStartOf="@id/mainStartGuideline"
-        app:layout_constraintWidth_max="300dp" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/mainEndGuideline"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/screen_horizontal_padding" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/screen_horizontal_padding"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            app:layout_constraintBottom_toTopOf="@id/mainBinaryNumberEditText"
+            app:layout_constraintEnd_toEndOf="@id/mainEndGuideline"
+            app:layout_constraintStart_toStartOf="@id/mainStartGuideline"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@{ String.valueOf(viewModel.decimalNumber) }" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/binary_number"
+            app:layout_constraintBottom_toTopOf="@id/mainBinaryNumberEditText"
+            app:layout_constraintStart_toStartOf="@id/mainBinaryNumberEditText" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/mainBinaryNumberEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:digits="01"
+            android:inputType="number"
+            android:text="@={ viewModel.binaryNumber }"
+            app:layout_constraintBottom_toTopOf="@id/mainMiddleGuideline"
+            app:layout_constraintEnd_toEndOf="@id/mainEndGuideline"
+            app:layout_constraintStart_toStartOf="@id/mainStartGuideline"
+            app:layout_constraintWidth_max="300dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
